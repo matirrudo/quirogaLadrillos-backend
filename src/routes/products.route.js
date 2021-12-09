@@ -29,7 +29,8 @@ router.post('/products', (request, response) => {
         name: product.name,
         description: product.description,
         price: product.price,
-        weight: product.weight
+        weight: product.weight,
+        imageUrl: product.imageUrl
     })
     
     newProduct.save().then(savedProduct => {
@@ -51,7 +52,8 @@ router.put('/products/:id',(request,response, next) => {
         name: product.name,
         description: product.description,
         price: product.price,
-        weight: product.weight
+        weight: product.weight,
+        imageUrl: product.imageUrl
     }
     Product.findByIdAndUpdate(id,newProductInfo,{new:true}).then(result => { //se especifica que traiga al documento actualizado
         response.json(result)
