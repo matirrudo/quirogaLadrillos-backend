@@ -4,7 +4,8 @@ const productSchema = new Schema({
     name: String,
     description: String,
     price: Number,
-    weight: Number
+    weight: Number,
+    imageUrl: String
 })
 
 productSchema.set('toJSON', {
