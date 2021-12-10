@@ -1,5 +1,6 @@
 const { application } = require('express');
 const express = require('express');
+const mongoose = require('mongoose')
 const handleErrors = require('../middlewares/handleErrors');
 const router = express.Router();
 const Product = require('../models/Product')
@@ -30,7 +31,11 @@ router.post('/products', (request, response) => {
         description: product.description,
         price: product.price,
         weight: product.weight,
-        imageUrl: product.imageUrl
+        sizeX: product.sizeX,
+        sizeY: product.sizeY,
+        sizeZ: product.sizeZ,
+        imageUrl: product.imageUrl,
+        active: product.active
     })
     
     newProduct.save().then(savedProduct => {
@@ -53,7 +58,11 @@ router.put('/products/:id',(request,response, next) => {
         description: product.description,
         price: product.price,
         weight: product.weight,
-        imageUrl: product.imageUrl
+        sizeX: product.sizeX,
+        sizeY: product.sizeY,
+        sizeZ: product.sizeZ,
+        imageUrl: product.imageUrl,
+        active: product.active
     }
     Product.findByIdAndUpdate(id,newProductInfo,{new:true}).then(result => { //se especifica que traiga al documento actualizado
         response.json(result)
